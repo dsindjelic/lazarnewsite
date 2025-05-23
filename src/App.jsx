@@ -1,12 +1,23 @@
 import { useRef } from 'react';
 import './App.css';
+import backgroundImage from './assets/background.jpg';
 
 function App() {
   const topRef = useRef(null);
   const aboutRef = useRef(null);
   const productsRef = useRef(null);
   const contactRef = useRef(null);
-
+  const buttonStyle = {
+    padding: '10px 20px',
+    fontSize: '16px',
+    borderRadius: '10px',
+    border: 'none',
+    backgroundColor: '#ffffffcc',
+    color: '#333',
+    cursor: 'pointer',
+    backdropFilter: 'blur(5px)',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.15)'
+  };
   const scrollTo = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -14,16 +25,53 @@ function App() {
   return (
     <div>
       <nav style={{ padding: '10px', background: '#f0f0f0', position: 'sticky', top: 0, zIndex: 100 }}>
-        <button onClick={() => scrollTo(topRef)} style={{ marginRight: '15px' }}>Početna</button>
-        <button onClick={() => scrollTo(aboutRef)} style={{ marginRight: '15px' }}>O nama</button>
-        <button onClick={() => scrollTo(productsRef)} style={{ marginRight: '15px' }}>Proizvodi</button>
-        <button onClick={() => scrollTo(contactRef)}>Kontakt</button>
+        <button onClick={() => scrollTo(topRef)} className="hero-button">Početna</button>
+        <button onClick={() => scrollTo(aboutRef)} className="hero-button">O nama</button>
+        <button onClick={() => scrollTo(productsRef)} className="hero-button">Proizvodi</button>
+        <button onClick={() => scrollTo(contactRef)} className="hero-button">Kontakt</button>
       </nav>
 
-      <section ref={topRef} style={{ height: '100vh', backgroundColor: '#e6f2ff', padding: '50px' }}>
-        <h1>Dobrodošli</h1>
-      <p>Mlekara Lazar d.o.o.</p>
-      </section>
+     <header
+          ref={topRef}
+          style={{
+            height: '100vh',
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            color: '#fff',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            padding: '50px',
+            position: 'relative', // mora za overlay
+            overflow: 'hidden'
+          }}
+        >
+          {/* Overlay */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.4)',
+              zIndex: 0
+            }}
+          ></div>
+
+          {/* Sadržaj iznad overlaya */}
+          <h1 style={{ zIndex: 1 }}>Dobrodošli</h1>
+          <p style={{ zIndex: 1 }}>Mlekara Lazar d.o.o.</p>
+          <div style={{ display: 'flex', gap: '20px', zIndex: 1 }}>
+            <button className="hero-button" onClick={() => scrollTo(servicesRef)}>Proizvodi</button>
+            <button className="hero-button" onClick={() => scrollTo(contactRef)}>Kontakt</button>
+          </div>
+</header>
+
 
       <section ref={aboutRef} style={{ height: '100vh', backgroundColor: '#fff', padding: '50px' }}>
         <h2>O nama</h2>
