@@ -2,8 +2,9 @@ import { useRef } from 'react';
 import './App.css';
 
 function App() {
+  const topRef = useRef(null);
   const aboutRef = useRef(null);
-  const servicesRef = useRef(null);
+  const productsRef = useRef(null);
   const contactRef = useRef(null);
 
   const scrollTo = (ref) => {
@@ -13,15 +14,16 @@ function App() {
   return (
     <div>
       <nav style={{ padding: '10px', background: '#f0f0f0', position: 'sticky', top: 0, zIndex: 100 }}>
+        <button onClick={() => scrollTo(topRef)} style={{ marginRight: '15px' }}>Početna</button>
         <button onClick={() => scrollTo(aboutRef)} style={{ marginRight: '15px' }}>O nama</button>
-        <button onClick={() => scrollTo(servicesRef)} style={{ marginRight: '15px' }}>Usluge</button>
+        <button onClick={() => scrollTo(productsRef)} style={{ marginRight: '15px' }}>Proizvodi</button>
         <button onClick={() => scrollTo(contactRef)}>Kontakt</button>
       </nav>
 
-      <header style={{ height: '100vh', backgroundColor: '#e6f2ff', padding: '50px' }}>
+      <section ref={topRef} style={{ height: '100vh', backgroundColor: '#e6f2ff', padding: '50px' }}>
         <h1>Dobrodošli</h1>
       <p>Mlekara Lazar d.o.o.</p>
-      </header>
+      </section>
 
       <section ref={aboutRef} style={{ height: '100vh', backgroundColor: '#fff', padding: '50px' }}>
         <h2>O nama</h2>
@@ -37,8 +39,8 @@ Kao doprinos što boljem kvalitetu proizvoda, završili smo proces sertifikacije
 </p>
       </section>
 
-      <section ref={servicesRef} style={{ height: '100vh', backgroundColor: '#f9f9f9', padding: '50px' }}>
-        <h2>Usluge</h2>
+      <section ref={productsRef} style={{ height: '100vh', backgroundColor: '#f9f9f9', padding: '50px' }}>
+        <h2>Proizvodi</h2>
         <ul>
           <li>Proizvodnja mlečnih proizvoda</li>
           <li>Distribucija</li>
@@ -46,7 +48,7 @@ Kao doprinos što boljem kvalitetu proizvoda, završili smo proces sertifikacije
         </ul>
       </section>
 
-      <section ref={contactRef} style={{ height: '100vh', backgroundColor: '#e6f2ff', padding: '50px' }}>
+      <section ref={contactRef} style={{ height: '100vh', backgroundColor: '#e6f2ff', padding: '10px' }}>
         <h2>Kontakt</h2>
         <h3>Lazar doo Blace</h3>
         <p>Kralja Petra I br. 6, 18420 Blace, Republika Srbija<br/>
@@ -55,14 +57,12 @@ Kao doprinos što boljem kvalitetu proizvoda, završili smo proces sertifikacije
         <h3>Telefoni</h3>
         <p>027/370020<br/>
           027/370021, 027/370022, 027/370023</p><br/>
-        <h3>E-mail</h3>
-        <p>mail</p><br/>
+        <p>E-mail</p>
+        <p>mmlazar@beotel.rs</p><br/>
     <h3>Kontakt osobe</h3><br/>
     <p>direktor i vlasnik: Milan Vidojević, tel.:065/8145970<br/>
     zamenik direktora: Biljana Vidojević, tel.:065/8112246<br/>
-    šef računovodstva: Jasmina Lukić<br/>
-    prodaja: Aleksandra Jovanović<br/>
-    nabavka: Biljana Vidojević</p>
+    </p>
       </section>
     </div>
   );
