@@ -51,8 +51,8 @@ function App() {
           ref={topRef}
           style={{
             height: '60vh',
-            backgroundImage: `url(${headerImage})`,
-            opacity: 0.8,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${headerImage})`,
+            overlay: 0.8,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -101,8 +101,8 @@ function App() {
 
       <section ref={aboutRef} style={{
             height: '60vh',
-            backgroundImage: `url(${aboutImage})`,
-            opacity: 0.6,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${aboutImage})`,
+            ovrlay: 0.6,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -131,8 +131,8 @@ Kao doprinos što boljem kvalitetu proizvoda, završili smo proces sertifikacije
 
       <section ref={productsRef}  style={{
             height: '60vh',
-            backgroundImage: `url(${productsImage})`,
-            opacity: 0.6,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${productsImage})`,
+            overlay: 0.6,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -150,7 +150,7 @@ Kao doprinos što boljem kvalitetu proizvoda, završili smo proces sertifikacije
           <Card />
       </section>
 
-      <section ref={contactRef} style={{ height: '100vh', backgroundColor: '#e6f2ff', padding: '1px' }}>
+      <section ref={contactRef} style={{  backgroundColor: '#e6f2ff', padding: '40px 20px' }}>
        
         <h2>Kontakt</h2>
         <h3 style={{
@@ -177,6 +177,24 @@ Kao doprinos što boljem kvalitetu proizvoda, završili smo proces sertifikacije
         </p>
          <ContactForm />
       </section>
+      <footer style={{
+  backgroundColor: '#2d3748',
+  padding: '8px 10px',
+  textAlign: 'center',
+  color: '#f9f9f9',
+  fontSize: '12px',
+  lineHeight: '1.2',
+}}>
+  <p style={{ margin: '2px 0' }}>
+    &copy; {new Date().getFullYear()} Lazar doo Blace. Sva prava zadržana.
+  </p>
+  <p style={{ margin: '2px 0' }}>
+    Web sajt izradio: <a href="https://bistrosistem.rs" target="_blank" rel="noopener noreferrer" style={{ color: '#90cdf4', textDecoration: 'none' }}>
+      Bistro Sistem
+    </a>
+  </p>
+</footer>
+
     </div>
   );
 }
